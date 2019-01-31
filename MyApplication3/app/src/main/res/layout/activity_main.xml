@@ -32,7 +32,7 @@
                 android:textSize="20dp"
                 android:hint="Email"
                 android:ems="10"
-                android:id="@+id/editText"
+                android:id="@+id/email"
                 android:layout_weight="1"
         />
 
@@ -51,7 +51,7 @@
                 android:textSize="20dp"
                 android:hint="Password"
                 android:ems="10"
-                android:id="@+id/editText2"
+                android:id="@+id/password"
                 android:layout_weight="1"/>
     </LinearLayout>
 
