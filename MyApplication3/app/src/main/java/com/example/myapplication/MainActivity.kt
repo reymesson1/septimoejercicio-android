@@ -4,13 +4,16 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import okhttp3.*
+import org.json.JSONObject
 import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
 
     var client = OkHttpClient()
+    var res : String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +25,24 @@ class MainActivity : AppCompatActivity() {
 
         var button = findViewById<Button>(R.id.button)
 
+        var textView = findViewById<TextView>(R.id.textView4) as TextView
+
+        run("https://api.github.com/users/reymesson1")
+
+        button.setOnClickListener{
+
+
+            textView.text = this.res
+
+
+
+        }
+
+    }
+
+    fun loading(param: String?){
+
+        this.res = param
     }
 
     fun run(url: String) {
@@ -31,7 +52,8 @@ class MainActivity : AppCompatActivity() {
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {}
-            override fun onResponse(call: Call, response: Response) = println(response.body()?.string())
+            override fun onResponse(call: Call, response: Response) = loading(response.body()?.string())
+//            override fun onResponse(call: Call, response: Response) = println(response.body()?.string())
         })
     }
 
