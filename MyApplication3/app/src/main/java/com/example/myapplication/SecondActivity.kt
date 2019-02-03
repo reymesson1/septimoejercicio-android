@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -27,6 +28,16 @@ class SecondActivity : AppCompatActivity() {
         text2.setText("\uf044")
         text3.setText("\uf007")
         text4.setText("\uf21d")
+
+        text.setOnClickListener{
+
+            var intent = Intent(this@SecondActivity, MasterActivity::class.java)
+            startActivity(intent)
+
+        }
+
+
+
 
 
     }
