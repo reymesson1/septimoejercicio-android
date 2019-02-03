@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -31,11 +32,21 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener{
 
+            var json = JSONObject(this.res)
 
-            textView.text = this.res
+            var username = json.getString("login")
 
+            if(username == email.text.toString()) {
 
+                var intent = Intent(this@MainActivity, SecondActivity::class.java)
+                intent.putExtra("main_activity_data", email.text.toString())
+                startActivity(intent)
 
+            }else{
+
+                textView.text = "Email or Password Invalid"
+
+            }
         }
 
     }
